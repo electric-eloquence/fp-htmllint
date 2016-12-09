@@ -1,0 +1,19 @@
+{
+  "name": "fp-htmllint",
+  "version": "0.0.0",
+  "description": "htmllint extension for Fepper",
+  "scripts": {
+    "postinstall": "node install.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/electric-eloquence/fp-htmllint.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "dependencies": {
+    "gulp-htmllint": "~0.0.11"
+  }
+}
