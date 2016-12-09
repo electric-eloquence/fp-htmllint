@@ -1,6 +1,6 @@
 {
   "name": "fp-htmllint",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "htmllint extension for Fepper",
   "scripts": {
     "postinstall": "node install.js"
