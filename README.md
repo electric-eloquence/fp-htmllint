@@ -1,6 +1,10 @@
 # htmllint extension for Fepper
 
-This extension provides an interface for [htmllint](https://github.com/htmllint/htmllint/).
+[htmllint](https://github.com/htmllint/htmllint)
+
+Installing this module will put an `.htmllintrc` file in your project's `app` 
+directory. Customize it to the needs of your project: 
+[htmllint options](https://github.com/htmllint/htmllint/wiki/Options)
 
 ### Install
 Add these tasks to `extend/contrib.js`
