@@ -1,5 +1,7 @@
 # htmllint extension for Fepper
 
+This extension provides an interface for [htmllint](https://github.com/htmllint/htmllint/).
+
 ### Install
 Add these tasks to `extend/contrib.js`
 
