@@ -1,11 +1,10 @@
 'use strict';
 
-const appDir = global.appDir;
-const pubDir = global.conf.ui.paths.public;
-
 const gulp = require('gulp');
 const plugins = require('gulp-load-plugins')();
 
+const appDir = global.appDir;
+const pubDir = global.conf.ui.paths.public;
 const utils = require(`${appDir}/core/lib/utils`);
 
 gulp.task('htmllint', function () {
