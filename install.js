@@ -13,7 +13,7 @@ if (fs.existsSync(confFile)) {
     }
 
     let appDir = `${rootDir}/`;
-    let regex = /^app_dir\s*$:.*$/m;
+    let regex = /^app_dir\s*:.*$/m;
 
     if (regex.test(data)) {
       let appDirConf = data.match(regex)[0].trim().split(':');
