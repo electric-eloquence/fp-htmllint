@@ -4,7 +4,7 @@ const fs = require('fs');
 
 const rootDir = `${process.cwd()}/../../..`;
 const confFile = `${rootDir}/conf.yml`;
-const rcFile = '.htmllintrc';
+const rcFile = process.argv[2];
 
 if (fs.existsSync(confFile)) {
   fs.readFile(confFile, {encoding: 'utf8'}, (err, data) => {

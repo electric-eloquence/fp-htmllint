@@ -3,7 +3,7 @@
   "version": "0.0.9",
   "description": "htmllint extension for Fepper",
   "scripts": {
-    "postinstall": "node install.js"
+    "postinstall": "node install.js .htmllintrc"
   },
   "repository": {
     "type": "git",
