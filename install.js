@@ -7,17 +7,17 @@ const confFile = `${rootDir}/conf.yml`;
 const rcFile = '.htmllintrc';
 
 if (fs.existsSync(confFile)) {
-  fs.readFile(confFile, (err, data) => {
+  fs.readFile(confFile, {encoding: 'utf8'}, (err, data) => {
     if (err) {
       throw err;
     }
 
-    // app_dir should be the first config.
     let appDir = `${rootDir}/`;
-    let regex = /^[^\n]*/;
+    let regex = /^app_dir\s*$:.*$/m;
 
     if (regex.test(data)) {
-      appDir += data.match(regex)[0].trim();
+      let appDirConf = data.match(regex)[0].trim().split(':');
+      appDir += appDirConf[1].trim();
     }
     else {
       appDir += 'app';
