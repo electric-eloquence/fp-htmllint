@@ -18,13 +18,10 @@ if (fs.existsSync(confFile)) {
     if (regex.test(data)) {
       let appDirConf = data.match(regex)[0].trim().split(':');
       appDir += appDirConf[1].trim();
-console.info(appDirConf);
     }
     else {
       appDir += 'app';
     }
-console.info(data);
-console.info(appDir);
 
     if (fs.existsSync(appDir)) {
       fs.readFile(rcFile, (err1, data1) => {
