@@ -1,8 +1,14 @@
 'use strict';
 
+const findUp = require('find-up');
 const fs = require('fs');
 
-const rootDir = `${process.cwd()}/../../..`;
+const rootDir = findUp.sync('fepper.command');
+
+if (!rootDir) {
+  return;
+}
+
 const confFile = `${rootDir}/conf.yml`;
 const rcFile = process.argv[2];
 
