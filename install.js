@@ -6,10 +6,6 @@ const path = require('path');
 
 var filepath = findUp.sync('fepper.command');
 
-
-console.info(findUp);
-console.info('rootDir');
-console.info(rootDir);
 if (!filepath) {
   return;
 }
@@ -17,6 +13,8 @@ if (!filepath) {
 const rootDir = path.dirname(filepath);
 const confFile = `${rootDir}/conf.yml`;
 const rcFile = process.argv[2];
+console.info('rootDir');
+console.info(rootDir);
 
 if (fs.existsSync(confFile)) {
   fs.readFile(confFile, {encoding: 'utf8'}, (err, data) => {
