@@ -2,12 +2,13 @@
   "name": "fp-htmllint",
   "version": "0.0.15",
   "description": "htmllint extension for Fepper",
+  "main": "htmllint~extend.js",
   "scripts": {
     "postinstall": "node install.js .htmllintrc"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/electric-eloquence/fp-htmllint.git"
+    "url": "git+https://github.com/electric-eloquence/fp-htmllint.git"
   },
   "license": "MIT",
   "engines": {
