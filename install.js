@@ -5,6 +5,10 @@ const fs = require('fs');
 
 const rootDir = findUp.sync('fepper.command');
 
+
+console.info(findUp);
+console.info('rootDir');
+console.info(rootDir);
 if (!rootDir) {
   return;
 }
