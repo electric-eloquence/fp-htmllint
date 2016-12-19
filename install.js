@@ -2,17 +2,19 @@
 
 const findUp = require('find-up');
 const fs = require('fs');
+const path = require('path');
 
-const rootDir = findUp.sync('fepper.command');
+var filepath = findUp.sync('fepper.command');
 
 
 console.info(findUp);
 console.info('rootDir');
 console.info(rootDir);
-if (!rootDir) {
+if (!filepath) {
   return;
 }
 
+const rootDir = path.dirname(filepath);
 const confFile = `${rootDir}/conf.yml`;
 const rcFile = process.argv[2];
 
