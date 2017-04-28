@@ -1,6 +1,6 @@
 {
   "name": "fp-htmllint",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "htmllint extension for Fepper",
   "main": "htmllint~extend.js",
   "scripts": {
