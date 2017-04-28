@@ -17,5 +17,24 @@
   "dependencies": {
     "find-up": "^2.1.0",
     "gulp-htmllint": "~0.0.11"
-  }
+  },
+  "keywords": [
+    "atomic",
+    "component",
+    "design",
+    "end",
+    "fepper",
+    "front",
+    "front-end",
+    "frontend",
+    "htmllint",
+    "lab",
+    "library",
+    "lint",
+    "pattern",
+    "prototype",
+    "prototyper",
+    "prototyping",
+    "template"
+  ]
 }
