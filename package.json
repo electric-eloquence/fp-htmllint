@@ -10,14 +10,6 @@
     "type": "git",
     "url": "git+https://github.com/electric-eloquence/fp-htmllint.git"
   },
-  "license": "MIT",
-  "engines": {
-    "node": ">=8.5.0"
-  },
-  "dependencies": {
-    "find-up": "^2.1.0",
-    "gulp-htmllint": "~0.0.11"
-  },
   "keywords": [
     "atomic",
     "component",
@@ -36,5 +28,13 @@
     "prototyper",
     "prototyping",
     "template"
-  ]
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.5.0"
+  },
+  "dependencies": {
+    "find-up": "^2.1.0",
+    "gulp-htmllint": "~0.0.11"
+  }
 }
