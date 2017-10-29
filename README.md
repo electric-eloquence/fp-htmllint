@@ -7,6 +7,7 @@ directory. Customize it to the needs of your project:
 [htmllint options](https://github.com/htmllint/htmllint/wiki/Options)
 
 ### Install
+
 Add these tasks to `extend/contrib.js`
 
 * Under gulp task 'contrib:static'
