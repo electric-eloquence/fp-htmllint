@@ -11,8 +11,8 @@ if (!filepath) {
   return;
 }
 
-const rootDir = path.dirname(filepath);
 const rcFile = process.argv[2];
+const rootDir = path.dirname(filepath);
 
 fs.readFile(rcFile, (err, data) => {
   if (err) {
