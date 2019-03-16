@@ -35,10 +35,9 @@
   },
   "homepage": "https://github.com/electric-eloquence/fp-htmllint#readme",
   "engines": {
-    "node": ">=8.5.0"
+    "node": ">=8.10.0"
   },
   "dependencies": {
-    "find-up": "^3.0.0",
     "gulp-htmllint": "^0.0.16"
   }
 }
