@@ -3,21 +3,16 @@
 const fs = require('fs');
 const path = require('path');
 
-const findUp = require('find-up');
+const utils = require('fepper-utils');
 
-const filepath = findUp.sync('fepper.command');
+const filepath = utils.findup('fepper.command', __dirname);
 
 if (!filepath) {
   return;
 }
 
 const rcFile = process.argv[2];
+const rcSource = path.resolve(__dirname, rcFile);
 const rootDir = path.dirname(filepath);
 
-fs.readFile(rcFile, (err, data) => {
-  if (err) {
-    throw err;
-  }
-
-  fs.writeFile(`${rootDir}/${rcFile}`, data);
-});
+fs.copyFileSync(rcSource, `${rootDir}/${rcFile}`);
