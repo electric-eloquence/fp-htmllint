@@ -1,10 +1,11 @@
 # htmllint extension for Fepper
 
-[htmllint](https://github.com/htmllint/htmllint)
+<a href="https://github.com/htmllint/htmllint" target="_blank">htmllint</a>
 
-Installing this module will put an `.htmllintrc` file in your project's `app` 
-directory. Customize it to the needs of your project: 
-[htmllint options](https://github.com/htmllint/htmllint/wiki/Options)
+Installing this module will put an `.htmllintrc` file in your project's current 
+working directory. Customize it to the needs of your project: 
+<a href="https://github.com/htmllint/htmllint/wiki/Options" target="_blank">
+htmllint options</a>
 
 ### Install
 
