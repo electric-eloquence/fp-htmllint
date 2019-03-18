@@ -11,6 +11,6 @@ pref.htmllint = pref.htmllint || {};
 pref.htmllint.config = pref.htmllint.config || `${rootDir}/.htmllintrc`
 
 gulp.task('htmllint', function () {
-  return gulp.src(pubDir.patterns + '/*/!(index|*markup-only).html')
+  return gulp.src(pubDir.patterns + '/*/!(index|viewall|*markup-only).html')
     .pipe(htmllint(pref.htmllint));
 });
