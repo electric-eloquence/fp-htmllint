@@ -5,8 +5,9 @@ const path = require('path');
 
 const utils = require('fepper-utils');
 
-const rootDir = utils.findup('fepper.command', process.cwd());
+const rootDir = global.rootDir || utils.findup('fepper.command', __dirname);
 
+/* istanbul ignore if */
 if (!rootDir) {
   return;
 }
