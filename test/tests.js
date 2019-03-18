@@ -4,6 +4,7 @@ const path = require('path');
 
 const expect = require('chai').expect;
 const fs = require('fs-extra');
+const glob = require('glob');
 const {Transform} = require('stream');
 
 process.env.ROOT_DIR = __dirname;
@@ -20,12 +21,14 @@ function reportLint(lintReports) {
 }
 
 const fp = require('fepper/tasker');
-const fepper = global.fepper;
 const {
   appDir,
-  conf
-} = fepper;
+  conf,
+  fepper
+} = global;
 const pathPatternsOrig = conf.ui.paths.public.patterns;
+
+require('../htmllint~extend');
 
 function retaskFpHtmllint(lintReports) {
   delete fp.tasks['fp-htmllint:test'];
@@ -44,15 +47,15 @@ describe('fp-htmllint', function () {
   });
 
   describe('on success', function () {
-    before(function () {
+    let lintReports = [];
+    let globbedIndexHtml = [];
+
+    before(function (done) {
       fepper.tasks.jsonCompile();
       fepper.ui.build();
-    });
- 
-    it('should lint .html files in the public patterns directory', function (done) {
-      let lintReports = [];
-
       retaskFpHtmllint(lintReports);
+
+      globbedIndexHtml = glob.sync(`${conf.ui.paths.public.patterns}/**/index.html`);
 
       fp.runSequence(
         'fp-htmllint:test',
@@ -61,11 +64,51 @@ describe('fp-htmllint', function () {
         }
       );
     });
+
+    it('should lint .html files in the public patterns directory', function () {
+      for (let lintReport of lintReports) {
+        expect(lintReport.extname).to.equal('.html');
+      }
+    });
+
+    it('should ignore index.html viewall files', function () {
+      expect(globbedIndexHtml).to.have.lengthOf.at.least(1);
+
+      for (let lintReport of lintReports) {
+        expect(lintReport.basename).to.not.equal('index.html');
+      }
+    });
+
+    it('should ignore index.html viewall files', function () {
+      expect(fs.existsSync(`${conf.ui.paths.public.patterns}/viewall/viewall.html`)).to.be.true;
+
+      for (let lintReport of lintReports) {
+        expect(lintReport.basename).to.not.equal('viewall.html');
+      }
+    });
+
+    it('should ignore markup-only.html files', function () {
+      for (let lintReport of lintReports) {
+        const markupOnlyHtml =
+          path.resolve(lintReport.dirname, path.basename(lintReport.basename, '.html')) + '.markup-only.html';
+
+        expect(fs.existsSync(markupOnlyHtml)).to.be.true;
+        expect(lintReport.basename).to.not.contain('.markup-only.html');
+      }
+    });
+
+    it('should ignore .mustache files', function () {
+      for (let lintReport of lintReports) {
+        const markupOnlyHtml =
+          path.resolve(lintReport.dirname, path.basename(lintReport.basename, '.html')) + '.mustache';
+
+        expect(fs.existsSync(markupOnlyHtml)).to.be.true;
+        expect(lintReport.basename).to.not.contain('.mustache');
+      }
+    });
   });
 
   describe('on error', function () {
-    require('../htmllint~extend');
- 
     before(function () {
       conf.ui.paths.public.patterns = `${pathPatternsOrig}-error`;
     });
