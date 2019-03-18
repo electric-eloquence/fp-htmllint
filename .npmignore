@@ -1,3 +1,4 @@
 .*
+!.htmllintrc
 appveyor.yml
 test/
