@@ -4,7 +4,15 @@
   "description": "htmllint extension for Fepper",
   "main": "htmllint~extend.js",
   "scripts": {
-    "postinstall": "node install.js .htmllintrc"
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "lint": "eslint *.js && eslint test/*.js",
+    "postinstall": "node install.js .htmllintrc",
+    "test": "nyc mocha"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run lint && npm test"
+    }
   },
   "repository": {
     "type": "git",
@@ -46,6 +54,7 @@
     "coveralls": "3.x",
     "eslint": "5.x",
     "fepper": "*",
+    "glob": "^7.1.2",
     "gulp": "https://github.com/electric-eloquence/gulp/tarball/v3-lts",
     "husky": "1.x",
     "mocha": "6.x",
