@@ -147,4 +147,29 @@ describe('fp-htmllint', function () {
       );
     });
   });
+
+  describe('on customization', function () {
+    before(function () {
+      pref.htmllint = {
+        rules: {
+          'attr-bans': [],
+          'indent-width': 2
+        }
+      };
+    });
+
+    it('should respect options set in pref.yml', function (done) {
+      let lintReports = [];
+
+      retaskFpHtmllint(lintReports);
+
+      fp.runSequence(
+        'fp-htmllint:test',
+        () => {
+          expect(lintReports[0].htmllint.success).to.be.true;
+          done();
+        }
+      );
+    });
+  });
 });

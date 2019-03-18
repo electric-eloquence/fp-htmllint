@@ -61,9 +61,6 @@ templater:
   # template language happens to be Feplet or Mustache, set this value to true.
   retain_mustache: false
 
-htmllint:
-  #failOnError: true
-
 # The instance_file declares the class which defines the Fepper instance for
 # this project. If you wish to customize a subclass that inherits from the
 # default class, put the path to that file here. Make sure the path is relative
