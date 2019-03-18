@@ -6,5 +6,7 @@
 .coveralls.yml
 .nyc_output/
 node_modules/
-public/*
-!public/patterns-error
+test/public/*
+!test/public/node_modules/
+!test/public/patterns-error/
+test/source/
