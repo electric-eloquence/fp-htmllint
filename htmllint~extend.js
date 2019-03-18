@@ -3,11 +3,12 @@
 const gulp = require('gulp');
 const htmllint = require('gulp-htmllint');
 
-const pubDir = global.conf.ui.paths.public;
 const {
+  conf,
   pref,
   rootDir
 } = global;
+const pubDir = conf.ui.paths.public;
 
 // Set up pref.htmllint.
 pref.htmllint = pref.htmllint || {};
