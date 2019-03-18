@@ -1,13 +1,26 @@
 'use strict';
 
+process.env.ROOT_DIR = __dirname;
+
 const path = require('path');
+const {Transform} = require('stream');
 
 const expect = require('chai').expect;
 const fs = require('fs-extra');
 const glob = require('glob');
-const {Transform} = require('stream');
 
-process.env.ROOT_DIR = __dirname;
+const fp = require('fepper/tasker');
+const {
+  appDir,
+  conf,
+  fepper,
+  pref,
+  rootDir
+} = global;
+const pathPatternsOrig = conf.ui.paths.public.patterns;
+const rcFile = `${rootDir}/.htmllintrc`;
+
+require('../htmllint~extend');
 
 function reportLint(lintReports) {
   return new Transform({
@@ -20,18 +33,6 @@ function reportLint(lintReports) {
   });
 }
 
-const fp = require('fepper/tasker');
-const {
-  appDir,
-  conf,
-  fepper,
-  rootDir
-} = global;
-const pathPatternsOrig = conf.ui.paths.public.patterns;
-const rcFile = `${rootDir}/.htmllintrc`;
-
-require('../htmllint~extend');
-
 function retaskFpHtmllint(lintReports) {
   delete fp.tasks['fp-htmllint:test'];
 
@@ -43,12 +44,15 @@ function retaskFpHtmllint(lintReports) {
 
 describe('fp-htmllint', function () {
   before(function () {
-    fs.removeSync(rcFile);
     fs.removeSync(conf.ui.paths.source.root);
     fs.copySync(`${appDir}/excludes/profiles/main/source`, conf.ui.paths.source.root);
   });
 
   describe('on install', function () {
+    before(function () {
+      fs.removeSync(rcFile);
+    });
+
     it('copies the default .htmllintrc into the current working directory', function () {
       const rcFileExistsBefore = fs.existsSync(rcFile);
 
@@ -150,6 +154,7 @@ describe('fp-htmllint', function () {
 
   describe('on customization', function () {
     before(function () {
+      conf.ui.paths.public.patterns = `${pathPatternsOrig}-error`;
       pref.htmllint = {
         rules: {
           'attr-bans': [],
