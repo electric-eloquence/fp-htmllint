@@ -52,7 +52,7 @@ describe('fp-htmllint', function () {
     it('copies the default .htmllintrc into the current working directory', function () {
       const rcFileExistsBefore = fs.existsSync(rcFile);
 
-      require('../install.js');
+      require('../install');
 
       const rcFileExistsAfter = fs.existsSync(rcFile);
 
