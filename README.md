@@ -13,11 +13,9 @@ npm i --save fp-htmllint
 
 ### Use
 
-Add these tasks to `extend/contrib.js`
+Add this tasks to `extend/contrib.js`
 
-* Under gulp task 'contrib:static'
-  * 'htmllint'
-* Under gulp task 'contrib:syncback'
+* Under gulp task 'contrib:once'
   * 'htmllint'
 
 On the command line:
