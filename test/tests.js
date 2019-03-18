@@ -24,9 +24,11 @@ const fp = require('fepper/tasker');
 const {
   appDir,
   conf,
-  fepper
+  fepper,
+  rootDir
 } = global;
 const pathPatternsOrig = conf.ui.paths.public.patterns;
+const rcFile = `${rootDir}/.htmllintrc`;
 
 require('../htmllint~extend');
 
@@ -41,9 +43,22 @@ function retaskFpHtmllint(lintReports) {
 
 describe('fp-htmllint', function () {
   before(function () {
-    fs.copySync(path.resolve(__dirname, '..', '.htmllintrc'), path.resolve(__dirname, '.htmllintrc'));
+    fs.removeSync(rcFile);
     fs.removeSync(conf.ui.paths.source.root);
     fs.copySync(`${appDir}/excludes/profiles/main/source`, conf.ui.paths.source.root);
+  });
+
+  describe('on install', function () {
+    it('copies the default .htmllintrc into the current working directory', function () {
+      const rcFileExistsBefore = fs.existsSync(rcFile);
+
+      require('../install.js');
+
+      const rcFileExistsAfter = fs.existsSync(rcFile);
+
+      expect(rcFileExistsBefore).to.be.false;
+      expect(rcFileExistsAfter).to.be.true;
+    });
   });
 
   describe('on success', function () {

@@ -6,7 +6,7 @@
   "scripts": {
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint *.js && eslint test/*.js",
-    "postinstall": "node install.js .htmllintrc",
+    "postinstall": "node install.js",
     "test": "nyc mocha"
   },
   "husky": {

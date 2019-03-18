@@ -5,14 +5,13 @@ const path = require('path');
 
 const utils = require('fepper-utils');
 
-const filepath = utils.findup('fepper.command', __dirname);
+const rootDir = utils.findup('fepper.command', process.cwd());
 
-if (!filepath) {
+if (!rootDir) {
   return;
 }
 
-const rcFile = process.argv[2];
+const rcFile = '.htmllintrc';
 const rcSource = path.resolve(__dirname, rcFile);
-const rootDir = path.dirname(filepath);
 
 fs.copyFileSync(rcSource, `${rootDir}/${rcFile}`);
