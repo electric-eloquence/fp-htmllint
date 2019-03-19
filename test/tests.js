@@ -156,16 +156,16 @@ describe('fp-htmllint', function () {
   describe('on customization', function () {
     before(function () {
       conf.ui.paths.public.patterns = `${patternsDir}-error`;
+    });
+
+    it('should respect options set in pref.yml', function (done) {
+      let lintReports = [];
       pref.htmllint = {
         rules: {
           'attr-bans': [],
           'indent-width': 2
         }
       };
-    });
-
-    it('should respect options set in pref.yml', function (done) {
-      let lintReports = [];
 
       retaskFpHtmllint(lintReports);
 
@@ -176,6 +176,24 @@ describe('fp-htmllint', function () {
           done();
         }
       );
+    });
+
+    it('should fail on error if set to do so', function () {
+      pref.htmllint = {
+        failOnError: true
+      };
+      delete fp.tasks['fp-htmllint:test'];
+
+      fp.task('fp-htmllint:test', () => {
+        return fp.tasks.htmllint.fn()
+          .on('error', (err) => {
+            expect(err).to.be.an.instanceof(Error);
+            expect(err.message).to.equal('1 error(s) occurred');
+            expect(err.plugin).to.equal('gulp-htmllint');
+          });
+      });
+
+      fp.tasks['fp-htmllint:test'].fn();
     });
   });
 });
