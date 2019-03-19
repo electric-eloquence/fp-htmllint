@@ -17,7 +17,8 @@ const {
   pref,
   rootDir
 } = global;
-const pathPatternsOrig = conf.ui.paths.public.patterns;
+const patternsDir = conf.ui.paths.public.patterns;
+const sourceDir = conf.ui.paths.source.root;
 const rcFile = `${rootDir}/.htmllintrc`;
 
 require('../htmllint~extend');
@@ -44,8 +45,8 @@ function retaskFpHtmllint(lintReports) {
 
 describe('fp-htmllint', function () {
   before(function () {
-    fs.removeSync(conf.ui.paths.source.root);
-    fs.copySync(`${appDir}/excludes/profiles/main/source`, conf.ui.paths.source.root);
+    fs.removeSync(sourceDir);
+    fs.copySync(`${appDir}/excludes/profiles/main/source`, sourceDir);
   });
 
   describe('on install', function () {
@@ -74,7 +75,7 @@ describe('fp-htmllint', function () {
       fepper.ui.build();
       retaskFpHtmllint(lintReports);
 
-      globbedIndexHtml = glob.sync(`${conf.ui.paths.public.patterns}/**/index.html`);
+      globbedIndexHtml = glob.sync(`${patternsDir}/**/index.html`);
 
       fp.runSequence(
         'fp-htmllint:test',
@@ -99,7 +100,7 @@ describe('fp-htmllint', function () {
     });
 
     it('should ignore index.html viewall files', function () {
-      expect(fs.existsSync(`${conf.ui.paths.public.patterns}/viewall/viewall.html`)).to.be.true;
+      expect(fs.existsSync(`${patternsDir}/viewall/viewall.html`)).to.be.true;
 
       for (let lintReport of lintReports) {
         expect(lintReport.basename).to.not.equal('viewall.html');
@@ -129,7 +130,7 @@ describe('fp-htmllint', function () {
 
   describe('on error', function () {
     before(function () {
-      conf.ui.paths.public.patterns = `${pathPatternsOrig}-error`;
+      conf.ui.paths.public.patterns = `${patternsDir}-error`;
     });
 
     it('should error on HTML that violates configured rules', function (done) {
@@ -154,7 +155,7 @@ describe('fp-htmllint', function () {
 
   describe('on customization', function () {
     before(function () {
-      conf.ui.paths.public.patterns = `${pathPatternsOrig}-error`;
+      conf.ui.paths.public.patterns = `${patternsDir}-error`;
       pref.htmllint = {
         rules: {
           'attr-bans': [],
