@@ -8,6 +8,7 @@ const {Transform} = require('stream');
 const {expect} = require('chai');
 const fs = require('fs-extra');
 const glob = require('glob');
+const slash = require('slash');
 
 const fp = require('fepper/tasker');
 const {
@@ -141,7 +142,7 @@ describe('fp-htmllint', function () {
       fp.runSequence(
         'fp-htmllint:test',
         () => {
-          expect(lintReports[0].relative).to.equal('04-pages-error/04-pages-error.html');
+          expect(slash(lintReports[0].relative)).to.equal('04-pages-error/04-pages-error.html');
           expect(lintReports[0].htmllint.success).to.be.false;
           expect(lintReports[0].htmllint.issues[0].code).to.equal('E001');
           expect(lintReports[0].htmllint.issues[0].data.attribute).to.equal('align');
