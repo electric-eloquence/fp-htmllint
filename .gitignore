@@ -5,8 +5,8 @@
 .DS_Store
 .coveralls.yml
 .nyc_output/
+/test/public/
+!/test/public/node_modules/
+!/test/public/patterns-error/
+/test/source/
 node_modules/
-test/public/*
-!test/public/node_modules/
-!test/public/patterns-error/
-test/source/
