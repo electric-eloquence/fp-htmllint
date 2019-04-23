@@ -1,6 +1,6 @@
 'use strict';
 
-const gulp = require('gulp');
+const gulp = global.gulp || require('gulp');
 const htmllint = require('gulp-htmllint');
 
 const {
