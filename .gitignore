@@ -10,3 +10,4 @@
 !/test/public/patterns-error/
 /test/source/
 node_modules/
+package-lock.json
