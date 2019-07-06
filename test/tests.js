@@ -197,4 +197,13 @@ describe('fp-htmllint', function () {
       fp.tasks['fp-htmllint:test'].fn();
     });
   });
+
+  describe('help text', function () {
+    it('should print help text', function (done) {
+      fp.runSeq(
+        'htmllint:help',
+        done
+      );
+    });
+  });
 });
