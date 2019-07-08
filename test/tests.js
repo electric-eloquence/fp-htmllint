@@ -79,7 +79,7 @@ describe('fp-htmllint', function () {
 
         globbedIndexHtml = glob.sync(`${patternsDir}/**/index.html`);
 
-        fp.runSequence(
+        fp.runSeq(
           'fp-htmllint:test',
           () => {
             done();
@@ -140,7 +140,7 @@ describe('fp-htmllint', function () {
 
         retaskFpHtmllint(lintReports);
 
-        fp.runSequence(
+        fp.runSeq(
           'fp-htmllint:test',
           () => {
             expect(slash(lintReports[0].relative)).to.equal('04-pages-error/04-pages-error.html');
@@ -171,7 +171,7 @@ describe('fp-htmllint', function () {
 
         retaskFpHtmllint(lintReports);
 
-        fp.runSequence(
+        fp.runSeq(
           'fp-htmllint:test',
           () => {
             expect(lintReports[0].htmllint.success).to.be.true;
