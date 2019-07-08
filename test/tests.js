@@ -180,7 +180,7 @@ describe('fp-htmllint', function () {
         );
       });
 
-      it('should fail on error if set to do so', function () {
+      it('should fail on error if set to do so', function (done) {
         pref.htmllint = {
           failOnError: true
         };
@@ -192,6 +192,7 @@ describe('fp-htmllint', function () {
               expect(err).to.be.an.instanceof(Error);
               expect(err.message).to.equal('1 error(s) occurred');
               expect(err.plugin).to.equal('gulp-htmllint');
+              done();
             });
         });
 
