@@ -115,7 +115,7 @@ describe('fp-htmllint', function () {
             path.resolve(lintReport.dirname, path.basename(lintReport.basename, '.html')) + '.markup-only.html';
 
           expect(fs.existsSync(markupOnlyHtml)).to.be.true;
-          expect(lintReport.basename).to.not.contain('.markup-only.html');
+          expect(lintReport.basename).to.not.have.string('.markup-only.html');
         }
       });
 
@@ -125,7 +125,7 @@ describe('fp-htmllint', function () {
             path.resolve(lintReport.dirname, path.basename(lintReport.basename, '.html')) + '.mustache';
 
           expect(fs.existsSync(markupOnlyHtml)).to.be.true;
-          expect(lintReport.basename).to.not.contain('.mustache');
+          expect(lintReport.basename).to.not.have.string('.mustache');
         }
       });
     });
