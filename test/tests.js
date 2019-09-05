@@ -87,13 +87,13 @@ describe('fp-htmllint', function () {
         );
       });
 
-      it('should lint .html files in the public patterns directory', function () {
+      it('lints .html files in the public patterns directory', function () {
         for (let lintReport of lintReports) {
           expect(lintReport.extname).to.equal('.html');
         }
       });
 
-      it('should ignore index.html viewall files', function () {
+      it('ignores index.html viewall files', function () {
         expect(globbedIndexHtml).to.have.lengthOf.at.least(1);
 
         for (let lintReport of lintReports) {
@@ -101,7 +101,7 @@ describe('fp-htmllint', function () {
         }
       });
 
-      it('should ignore index.html viewall files', function () {
+      it('ignores index.html viewall files', function () {
         expect(fs.existsSync(`${patternsDir}/viewall/viewall.html`)).to.be.true;
 
         for (let lintReport of lintReports) {
@@ -109,7 +109,7 @@ describe('fp-htmllint', function () {
         }
       });
 
-      it('should ignore markup-only.html files', function () {
+      it('ignores markup-only.html files', function () {
         for (let lintReport of lintReports) {
           const markupOnlyHtml =
             path.resolve(lintReport.dirname, path.basename(lintReport.basename, '.html')) + '.markup-only.html';
@@ -119,7 +119,7 @@ describe('fp-htmllint', function () {
         }
       });
 
-      it('should ignore .mustache files', function () {
+      it('ignores .mustache files', function () {
         for (let lintReport of lintReports) {
           const markupOnlyHtml =
             path.resolve(lintReport.dirname, path.basename(lintReport.basename, '.html')) + '.mustache';
@@ -135,7 +135,7 @@ describe('fp-htmllint', function () {
         conf.ui.paths.public.patterns = `${patternsDir}-error`;
       });
 
-      it('should error on HTML that violates configured rules', function (done) {
+      it('errors on HTML that violates configured rules', function (done) {
         let lintReports = [];
 
         retaskFpHtmllint(lintReports);
@@ -160,7 +160,7 @@ describe('fp-htmllint', function () {
         conf.ui.paths.public.patterns = `${patternsDir}-error`;
       });
 
-      it('should respect options set in pref.yml', function (done) {
+      it('respects options set in pref.yml', function (done) {
         let lintReports = [];
         pref.htmllint = {
           rules: {
@@ -180,7 +180,7 @@ describe('fp-htmllint', function () {
         );
       });
 
-      it('should fail on error if set to do so', function (done) {
+      it('fails on error if set to do so', function (done) {
         pref.htmllint = {
           failOnError: true
         };
@@ -202,7 +202,7 @@ describe('fp-htmllint', function () {
   });
 
   describe('fp htmllint:help', function () {
-    it('should print help text', function (done) {
+    it('prints help text', function (done) {
       fp.runSeq(
         'htmllint:help',
         done
