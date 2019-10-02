@@ -81,9 +81,7 @@ describe('fp-htmllint', function () {
 
         fp.runSeq(
           'fp-htmllint:test',
-          () => {
-            done();
-          }
+          done
         );
       });
 
