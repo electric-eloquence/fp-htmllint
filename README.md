@@ -47,10 +47,10 @@ htmllint:
 [snyk-image]: https://snyk.io/test/github/electric-eloquence/fp-htmllint/master/badge.svg
 [snyk-url]: https://snyk.io/test/github/electric-eloquence/fp-htmllint/master
 
-[travis-image]: https://img.shields.io/travis/electric-eloquence/fp-htmllint.svg?label=mac%20%26%20linux
+[travis-image]: https://img.shields.io/travis/electric-eloquence/fp-htmllint/master.svg?label=mac%20%26%20linux
 [travis-url]: https://travis-ci.org/electric-eloquence/fp-htmllint
 
-[appveyor-image]: https://img.shields.io/appveyor/ci/e2tha-e/fp-htmllint.svg?label=windows
+[appveyor-image]: https://img.shields.io/appveyor/ci/e2tha-e/fp-htmllint/master.svg?label=windows
 [appveyor-url]: https://ci.appveyor.com/project/e2tha-e/fp-htmllint
 
 [coveralls-image]: https://img.shields.io/coveralls/electric-eloquence/fp-htmllint/master.svg
