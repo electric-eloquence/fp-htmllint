@@ -46,7 +46,6 @@
     "node": ">=8.16.0"
   },
   "dependencies": {
-    "fepper-utils": "*",
     "gulp-htmllint": "^0.0.16"
   },
   "devDependencies": {
@@ -54,11 +53,12 @@
     "coveralls": "3.x",
     "eslint": "6.x",
     "fepper": "*",
+    "fepper-utils": "*",
     "glob": "^7.1.2",
     "gulp": "https://github.com/electric-eloquence/gulp/tarball/v3-lts",
     "husky": "1.x",
     "mocha": "6.x",
     "nyc": "14.x",
-    "slash": "^2.0.0"
+    "slash": "^3.0.0"
   }
 }
