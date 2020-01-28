@@ -73,6 +73,7 @@ describe('fp-htmllint', function () {
       let globbedIndexHtml = [];
 
       before(function (done) {
+        this.timeout(5000);
         fepper.tasks.jsonCompile();
         fepper.ui.build();
         retaskFpHtmllint(lintReports);
