@@ -54,11 +54,11 @@
     "eslint": "6.x",
     "fepper": "*",
     "fepper-utils": "*",
-    "glob": "^7.1.2",
+    "glob": "^7.1.6",
     "gulp": "https://github.com/electric-eloquence/gulp/tarball/v3-lts",
-    "husky": "1.x",
-    "mocha": "6.x",
-    "nyc": "14.x",
+    "husky": "4.x",
+    "mocha": "7.x",
+    "nyc": "15.x",
     "slash": "^3.0.0"
   }
 }
