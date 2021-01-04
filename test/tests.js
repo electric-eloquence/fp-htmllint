@@ -87,7 +87,7 @@ describe('fp-htmllint', function () {
       });
 
       it('lints .html files in the public patterns directory', function () {
-        for (let lintReport of lintReports) {
+        for (const lintReport of lintReports) {
           expect(lintReport.extname).to.equal('.html');
         }
       });
@@ -95,7 +95,7 @@ describe('fp-htmllint', function () {
       it('ignores index.html viewall files', function () {
         expect(globbedIndexHtml).to.have.lengthOf.at.least(1);
 
-        for (let lintReport of lintReports) {
+        for (const lintReport of lintReports) {
           expect(lintReport.basename).to.not.equal('index.html');
         }
       });
@@ -103,13 +103,13 @@ describe('fp-htmllint', function () {
       it('ignores index.html viewall files', function () {
         expect(fs.existsSync(`${patternsDir}/viewall/viewall.html`)).to.be.true;
 
-        for (let lintReport of lintReports) {
+        for (const lintReport of lintReports) {
           expect(lintReport.basename).to.not.equal('viewall.html');
         }
       });
 
       it('ignores markup-only.html files', function () {
-        for (let lintReport of lintReports) {
+        for (const lintReport of lintReports) {
           const markupOnlyHtml =
             path.resolve(lintReport.dirname, path.basename(lintReport.basename, '.html')) + '.markup-only.html';
 
@@ -119,7 +119,7 @@ describe('fp-htmllint', function () {
       });
 
       it('ignores .mustache files', function () {
-        for (let lintReport of lintReports) {
+        for (const lintReport of lintReports) {
           const markupOnlyHtml =
             path.resolve(lintReport.dirname, path.basename(lintReport.basename, '.html')) + '.mustache';
 
