@@ -46,7 +46,7 @@
     "node": ">=12.0.0"
   },
   "dependencies": {
-    "gulp-htmllint": "^0.0.16"
+    "gulp-htmllint": "^0.0.19"
   },
   "devDependencies": {
     "chai": "4.x",
