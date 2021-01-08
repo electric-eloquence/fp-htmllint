@@ -14,5 +14,8 @@ if (!rootDir) {
 
 const rcFile = '.htmllintrc';
 const rcSource = path.resolve(__dirname, rcFile);
+const rcDest = `${rootDir}/${rcFile}`;
 
-fs.copyFileSync(rcSource, `${rootDir}/${rcFile}`);
+if (!fs.existsSync(rcDest)) {
+  fs.copyFileSync(rcSource, rcDest);
+}
