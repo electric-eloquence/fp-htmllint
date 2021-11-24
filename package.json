@@ -42,9 +42,6 @@
     "url": "https://github.com/electric-eloquence/fp-htmllint/issues"
   },
   "homepage": "https://github.com/electric-eloquence/fp-htmllint#readme",
-  "engines": {
-    "node": ">=12.0.0"
-  },
   "dependencies": {
     "glob": "^7.1.6",
     "gulp-htmllint": "^0.0.19"
