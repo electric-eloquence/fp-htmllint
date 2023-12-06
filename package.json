@@ -43,7 +43,7 @@
   },
   "homepage": "https://github.com/electric-eloquence/fp-htmllint#readme",
   "dependencies": {
-    "glob": "^7.1.6",
+    "glob": "^9.0.0",
     "gulp-htmllint": "^0.0.19"
   },
   "devDependencies": {
